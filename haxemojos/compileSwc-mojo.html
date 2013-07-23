@@ -10,7 +10,7 @@
     <meta name="Date-Revision-yyyymmdd" content="20130724" />
     <meta http-equiv="Content-Language" content="en" />
     <title>Haxemojos - 
-    haxemojos:testCompile</title>
+    haxemojos:compileSwc</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -152,15 +152,15 @@
             
   
     <div class="section">
-<h2>haxemojos:testCompile<a name="haxemojos:testCompile"></a></h2>
+<h2>haxemojos:compileSwc<a name="haxemojos:compileSwc"></a></h2>
       
 <p><b>Full name</b>:</p>
       
-<p>com.tenderowls.opensource:haxemojos-maven-plugin:1.0.0-RC2:testCompile</p>
+<p>com.tenderowls.opensource:haxemojos-maven-plugin:1.0.0-RC2:compileSwc</p>
       
 <p><b>Description</b>:</p>
       
-<div>Compile tests with `neko` compile target.</div>
+<div>Compile SWC for Adobe(R) Flash Player(TM) or Adobe(R) AIR(TM).</div>
       
 <p><b>Attributes</b>:</p>
       
@@ -168,10 +168,50 @@
         
 <li>Requires a Maven project to be executed.</li>
         
-<li>Requires dependency resolution of artifacts in scope: <tt>test</tt>.</li>
+<li>Requires dependency resolution of artifacts in scope: <tt>compile</tt>.</li>
         
-<li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>test-compile</tt>.</li>
+<li>Binds by default to the <a class="externalLink" href="http://maven.apache.org/ref/current/maven-core/lifecycles.html">lifecycle phase</a>: <tt>compile</tt>.</li>
       </ul>
+      
+<div class="section">
+<h3>Required Parameters<a name="Required_Parameters"></a></h3>
+        
+<table class="table table-striped" border="0">
+          
+<tr class="a">
+            
+<th>Name</th>
+            
+<th>Type</th>
+            
+<th>Since</th>
+            
+<th>Description</th>
+          </tr>
+          
+<tr class="b">
+            
+<td><b><a href="#main">main</a></b></td>
+            
+<td><tt>String</tt></td>
+            
+<td><tt>-</tt></td>
+            
+<td>Main class<br /></td>
+          </tr>
+          
+<tr class="a">
+            
+<td><b><a href="#swfVersion">swfVersion</a></b></td>
+            
+<td><tt>String</tt></td>
+            
+<td><tt>-</tt></td>
+            
+<td>Change the SWF version (6 to 11.x)<br /><b>Default value is</b>: <tt>11.2</tt>.<br /></td>
+          </tr>
+        </table>
+      </div>
       
 <div class="section">
 <h3>Optional Parameters<a name="Optional_Parameters"></a></h3>
@@ -191,6 +231,17 @@
           
 <tr class="b">
             
+<td><b><a href="#debug">debug</a></b></td>
+            
+<td><tt>boolean</tt></td>
+            
+<td><tt>-</tt></td>
+            
+<td>Compile in debug mode<br /></td>
+          </tr>
+          
+<tr class="a">
+            
 <td><b><a href="#defines">defines</a></b></td>
             
 <td><tt>List</tt></td>
@@ -200,7 +251,29 @@
 <td>Define a conditional compilation flag<br /></td>
           </tr>
           
+<tr class="b">
+            
+<td><b><a href="#flashStrict">flashStrict</a></b></td>
+            
+<td><tt>boolean</tt></td>
+            
+<td><tt>-</tt></td>
+            
+<td>More type strict flash API<br /></td>
+          </tr>
+          
 <tr class="a">
+            
+<td><b><a href="#flashUseStage">flashUseStage</a></b></td>
+            
+<td><tt>boolean</tt></td>
+            
+<td><tt>-</tt></td>
+            
+<td>Place objects found on the stage of the SWF lib<br /></td>
+          </tr>
+          
+<tr class="b">
             
 <td><b><a href="#resources">resources</a></b></td>
             
@@ -221,18 +294,18 @@
 </pre></div><br /></td>
           </tr>
           
-<tr class="b">
+<tr class="a">
             
-<td><b><a href="#testRunner">testRunner</a></b></td>
+<td><b><a href="#swfHeader">swfHeader</a></b></td>
             
 <td><tt>String</tt></td>
             
 <td><tt>-</tt></td>
             
-<td>Test runner class. If is not defined then generated automatically.<br /></td>
+<td>Define SWF header (width:height:fps:color)<br /></td>
           </tr>
           
-<tr class="a">
+<tr class="b">
             
 <td><b><a href="#verbose">verbose</a></b></td>
             
@@ -248,6 +321,16 @@
 <div class="section">
 <h3>Parameter Details<a name="Parameter_Details"></a></h3>
         
+<p><b><a name="debug">debug</a>:</b></p>
+        
+<div>Compile in debug mode</div>
+        
+<ul>
+          
+<li><b>Type</b>: <tt>boolean</tt></li>
+          
+<li><b>Required</b>: <tt>No</tt></li>
+        </ul><hr />
 <p><b><a name="defines">defines</a>:</b></p>
         
 <div>Define a conditional compilation flag</div>
@@ -257,6 +340,36 @@
 <li><b>Type</b>: <tt>java.util.List</tt></li>
           
 <li><b>Required</b>: <tt>No</tt></li>
+        </ul><hr />
+<p><b><a name="flashStrict">flashStrict</a>:</b></p>
+        
+<div>More type strict flash API</div>
+        
+<ul>
+          
+<li><b>Type</b>: <tt>boolean</tt></li>
+          
+<li><b>Required</b>: <tt>No</tt></li>
+        </ul><hr />
+<p><b><a name="flashUseStage">flashUseStage</a>:</b></p>
+        
+<div>Place objects found on the stage of the SWF lib</div>
+        
+<ul>
+          
+<li><b>Type</b>: <tt>boolean</tt></li>
+          
+<li><b>Required</b>: <tt>No</tt></li>
+        </ul><hr />
+<p><b><a name="main">main</a>:</b></p>
+        
+<div>Main class</div>
+        
+<ul>
+          
+<li><b>Type</b>: <tt>java.lang.String</tt></li>
+          
+<li><b>Required</b>: <tt>Yes</tt></li>
         </ul><hr />
 <p><b><a name="resources">resources</a>:</b></p>
         
@@ -278,15 +391,27 @@
           
 <li><b>Required</b>: <tt>No</tt></li>
         </ul><hr />
-<p><b><a name="testRunner">testRunner</a>:</b></p>
+<p><b><a name="swfHeader">swfHeader</a>:</b></p>
         
-<div>Test runner class. If is not defined then generated automatically.</div>
+<div>Define SWF header (width:height:fps:color)</div>
         
 <ul>
           
 <li><b>Type</b>: <tt>java.lang.String</tt></li>
           
 <li><b>Required</b>: <tt>No</tt></li>
+        </ul><hr />
+<p><b><a name="swfVersion">swfVersion</a>:</b></p>
+        
+<div>Change the SWF version (6 to 11.x)</div>
+        
+<ul>
+          
+<li><b>Type</b>: <tt>java.lang.String</tt></li>
+          
+<li><b>Required</b>: <tt>Yes</tt></li>
+          
+<li><b>Default</b>: <tt>11.2</tt></li>
         </ul><hr />
 <p><b><a name="verbose">verbose</a>:</b></p>
         
